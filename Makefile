@@ -1,6 +1,6 @@
 CC=g++
 
-CFLAGS=-Wall -Wextra -std=c++11 -g
+CFLAGS=-Wall -Wextra -std=c++17 -g
 CFLAGS += -Iinc
 
 

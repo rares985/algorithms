@@ -16,7 +16,9 @@
 void bubbleSort(std::vector<int> &vec);
 void insertionSort(std::vector<int> &vec);
 void selectionSort(std::vector<int> &vec);
-void mergeSort(std::vector<int> &vec, int left, int right);
+void mergeSort(std::vector<int> &vec);
+void quickSort(std::vector<int> &vec);
+
 
 
 template<typename T>

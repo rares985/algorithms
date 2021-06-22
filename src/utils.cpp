@@ -79,7 +79,7 @@ static void merge(std::vector<int> &vec, int left, int middle, int right)
 
     while (true)
     {
-        if (leftIdx >= leftvec.size() || rigthIdx >= rightvec.size())
+        if (leftIdx >= leftvec.size() || rightIdx >= rightvec.size())
         {
             break;
         }
@@ -111,7 +111,7 @@ static void merge(std::vector<int> &vec, int left, int middle, int right)
     }
 }
 
-void mergeSort(std::vector<int> &vec, int left, int right)
+static void mergeSort(std::vector<int> &vec, int left, int right)
 {
     int middle = left + (right - left) / 2;
 
@@ -121,4 +121,48 @@ void mergeSort(std::vector<int> &vec, int left, int right)
         mergeSort(vec, middle + 1, right);
         merge(vec, left, middle, right);
     }
+}
+
+void mergeSort(std::vector<int> &vec)
+{
+    mergeSort(vec, 0, vec.size() - 1);
+}
+
+static int partition(std::vector<int> &vec, int low, int high)
+{
+    int i = low - 1;
+    int j = high + 1;
+    int pivot = vec[(high + low) / 2];
+
+    while(true)
+    {
+        do {
+            i += 1;
+        } while (vec[i] < pivot);
+
+        do {
+            j -= 1;
+        } while (vec[j] > pivot);
+
+        if (i >= j)
+        {
+            return j;
+        }
+        swap(vec[i], vec[j]);
+    }
+}
+
+static void quickSort(std::vector<int> &vec, int low, int high)
+{
+    if (low < high)
+    {
+        int pivotIdx = partition(vec, low, high);
+        quickSort(vec, low, pivotIdx);
+        quickSort(vec, pivotIdx + 1, high);
+    }
+}
+
+void quickSort(std::vector<int> &vec)
+{
+    quickSort(vec, 0, vec.size() - 1);
 }
